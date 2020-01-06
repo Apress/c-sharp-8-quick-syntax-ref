@@ -1,0 +1,2277 @@
+C# Quick Syntax Reference - Source Code
+
+*** Chapter 1 - Hello World ***
+ 
+class MyApp
+{
+  static void Main()
+  {
+    System.Console.WriteLine("Hello World");
+  }
+}
+
+*** Chapter 2 - Compile and Run ***
+
+// single-line comment
+ 
+/* multi-line
+   comment */
+
+/// <summary>Class level documentation.</summary>
+class MyApp
+{
+  /** <summary>Program entry point.</summary>
+      <param name="args">Command line arguments.</param> 
+   */
+  static void Main(string[] args)
+  {
+    System.Console.WriteLine("Hello World");
+  }
+}
+
+*** Chapter 3 - Variables ***
+ 
+class MyApp
+{
+  static void Main()
+  {
+    // Declaration
+    int myInt;
+
+    // Assignment
+    myInt = 10;
+
+    // Output
+    System.Console.Write(myInt); // "10"
+  }
+}
+ 
+
+class MyApp
+{
+  static void Main()
+  {
+    // Signed integers
+    sbyte myInt8  = 2;  // -128   to +127
+    short myInt16 = 1;  // -32768 to +32767
+    int   myInt32 = 0;  // -2^31  to +2^31-1
+    long  myInt64 =-1;  // -2^63  to +2^63-1
+
+    // Unsigned integers
+    byte   uInt8  = 0;  // 0 to 255
+    ushort uInt16 = 1;  // 0 to 65535
+    uint   uInt32 = 2;  // 0 to 2^32-1
+    ulong  uInt64 = 3;  // 0 to 2^64-1
+
+    int myHex = 0xF; // 15 in hexadecimal (base 16)
+    int myBin = 0b_0010_0010; // 34 in binary notation (0b)
+
+    // Floating-point types
+    float   myFloat   = 3.14F; // 7 digits
+    double  myDouble  = 3.14;  // 15-16 digits
+    decimal myDecimal = 3.14M; // 28-29 digits
+
+    char c = 'a'; // Unicode char
+    bool b = true; // bool value
+  }
+}
+
+*** Chapter 4 - Operators ***
+ 
+class MyApp
+{
+  static void Main()
+  {
+    // Arithmetic operators
+    float f = 3 + 2; // 5 // addition
+    f = 3 - 2; // 1 // subtraction
+    f = 3 * 2; // 6 // multiplication
+    f = 3 / 2; // 1 // division
+    f = 3 % 2; // 1 // modulus (division remainder)
+
+    // Combined assignment operators
+    int i = 0;
+    i += 5; // i = i+5;
+    i -= 5; // i = i-5;
+    i *= 5; // i = i*5; 
+    i /= 5; // i = i/5;
+    i %= 5; // i = i%5;
+
+    // Increment and decrement operators
+    i++; // i = i+1;
+    i--; // i = i-1;
+
+    i++; // post-increment
+    i--; // post-decrement
+    ++i; // pre-increment
+    --i; // pre-decrement 
+
+    int j;
+    i = 5; j = i++; // j=5, i=6   
+    i = 5; j = ++i; // j=6, i=6
+
+    // Comparison operators
+    bool b = (2 == 3); // equal to (false)
+    b = (2 != 3); // not equal to (true)
+    b = (2 > 3);  // greater than (false)
+    b = (2 < 3);  // less than (true)
+    b = (2 >= 3); // greater than or equal to (false)
+    b = (2 <= 3); // less than or equal to (true)
+
+    // Logical operators
+    b = (true && false); // logical and (false)
+    b = (true || false); // logical or (true)
+    b = !(true);         // logical not (false)
+
+    // Bitwise operators
+    i = 5 & 4;  // and (0b101 & 0b100 = 0b100 = 4)
+    i = 5 | 4;  // or (0b101 | 0b100 = 0b101 = 5)
+    i = 5 ^ 4;  // xor (0b101 ^ 0b100 = 0b001 = 1)
+    i = 4 << 1; // left shift (0b100 << 1 = 0b1000 = 8)
+    i = 4 >> 1; // right shift (0b100 >> 1 = 0b10 = 2)
+    i = ~4;     // invert (~0b00000100 = 0b11111011 = -5)
+
+    i=5; x &= 4;  // and (0b101 & 0b100 = 0b100 = 4)
+    i=5; x |= 4;  // or (0b101 | 0b100 = 0b101 = 5)
+    i=5; x ^= 4;  // xor (0b101 ^ 0b100 = 0b001 = 1)
+    i=5; x <<= 1; // left shift (0b101 << 1 = 0b1010 = 10)
+    i=5; x >>= 1; // right shift (0b101 >> 1 = 0b10 = 2)
+  }
+}
+
+*** Chapter 5 - String ***
+ 
+class MyApp
+{
+  static void Main()
+  {
+    // String assignment
+    string a = "Hello";
+
+    // String concatenation
+    string b = a + " World"; // Hello World
+    a += " World";           // Hello World
+
+    int i = 1;
+    string c = i + " is " + 1; // 1 is 1
+    string d = i.ToString() + " is " + 1.ToString(); // 1 is 1
+
+    string s1 = "Hello";
+    string s2 = "World";
+    string s = $"{s1} {s2}"; // Hello World
+
+    // Newline character
+    string myString = "Hello\nWorld";
+
+    // Verbatim string
+    string e = "c:\\Windows\\System32\\cmd.exe";
+    string f = @"c:\Windows\System32\cmd.exe";
+
+    // String compare
+    string greeting = "Hi";
+    bool b = (greeting == "Hi"); // true
+
+    // String members
+    string a = "String";
+    string b = a.Replace("i", "o"); // Strong
+    b = a.Insert(0, "My ");  // My String
+    b = a.Remove(0, 3);      // ing
+    b = a.Substring(0, 3);   // Str
+    b = a.ToUpper();         // STRING
+    int i = a.Length;            // 6
+
+    // StringBuilder class
+    System.Text.StringBuilder sb = 
+      new System.Text.StringBuilder("Hello");
+
+    sb.Append(" World");   // Hello World
+    sb.Remove(0, 5);       // World
+    sb.Insert(0, "Bye");   // Bye World
+
+    string s = sb.ToString(); // Bye World
+  }
+}
+
+*** Chapter 6 - Arrays ***
+
+class MyApp
+{
+  static void Main()
+  {
+    // Array declaration
+    int[] x; // integer array
+
+    // Array allocation
+    x = new int[3];
+
+    // Array assignment
+    x[0] = 1;
+    x[1] = 2;
+    x[2] = 3;
+
+    int[] y = new int[] { 1, 2, 3 };
+    int[] z = { 1, 2, 3 };
+
+    // Array access
+    System.Console.Write(x[0] + x[1] + x[2]); // "6"
+
+    // Rectangular arrays
+    string[,] a = new string[2, 2];
+
+    a[0, 0] = "00"; a[0, 1] = "01";
+    a[1, 0] = "10"; a[1, 1] = "11";
+
+    string[,] b = { { "00", "01" }, { "10", "11" } };
+
+    // Jagged arrays
+    string[][] c = new string[2][];
+    c[0] = new string[1]; c[0][0] = "00";
+    c[1] = new string[2]; c[1][0] = "10"; c[1][1] = "11";
+
+    string[][] d = { new string[] { "00", "01" },
+                     new string[] { "10", "11" } };
+  }
+}
+
+*** Chapter 7 - Conditionals ***
+ 
+class MyApp
+{
+  static void Main()
+  {
+    // Get a random integer (0, 1 or 2)
+    int x = new System.Random().Next(3);
+
+    // If statement
+    if (x < 1) {
+      System.Console.Write(x + " < 1");
+    }
+    else if (x > 1) {
+      System.Console.Write(x + " > 1");
+    }
+    else {
+      System.Console.Write(x + " == 1");
+    }
+
+    if (x < 1)
+      System.Console.Write(x + " < 1");
+    else if (x > 1)
+      System.Console.Write(x + " > 1");
+    else
+      System.Console.Write(x + " == 1");
+
+    // Switch statement
+    x = new System.Random().Next(4);
+
+    switch (x)
+    {
+      case 0: System.Console.Write(x + " is 0"); break;
+      case 1: System.Console.Write(x + " is 1"); break;
+      default: System.Console.Write(x + " is >1"); break;
+    }
+
+    switch (x)
+    {
+      case 0:
+      case 1: System.Console.Write("x is 0 or 1"); break;
+    }
+
+    // Goto statement
+    goto myLabel;
+    // …
+    myLabel:
+
+    x = new System.Random().Next(4);
+    string result = x switch {
+      0 => "zero",
+      1 => "one",
+      _ => "more than one"
+    };
+    System.Console.WriteLine("x is " + result);
+
+    // Ternary operator (?:)
+    double y = new System.Random().NextDouble();
+    y = (y < 0.5) ? 0 : 1;
+  }
+}
+
+*** Chapter 8 - Loops ***
+
+class MyApp
+{
+  static void Main()
+  {
+    // While loop
+    int i = 0;
+    while (i < 10) { 
+      System.Console.Write(i++); 
+    }
+
+    // Do-while loop
+    int j = 0;
+    do { 
+      System.Console.Write(j++); 
+    } while (j < 10);
+
+    // For loop
+    for (int k = 0; k < 10; k++) {
+      System.Console.Write(k); // 0-9
+    }
+
+    for (int k = 0, m = 5; k < 10; k++, m--) {
+      System.Console.Write(k+m); // 5 (10x)
+    }
+
+    for (int k = 0; k < 10; ) {
+      System.Console.Write(k++); // 0-9
+    }
+
+    // Foreach loop
+    int[] a = { 1, 2, 3 };
+    foreach (int n in a) {
+      System.Console.Write(n); // "123"
+    }
+
+    // Break and continue
+    for (int i = 0; i < 10; i++) {
+      if (i == 5) break; // end loop
+      if (i == 3) continue; // start next iteration
+      System.Console.Write(i); // "0124"
+    }
+  }
+}
+
+*** Chapter 9 - Methods ***
+
+class MyApp
+{
+  void MyPrint()
+  {
+    System.Console.WriteLine("Hello World");
+  }
+
+  static void Main()
+  {
+    MyApp m = new MyApp();
+    m.MyPrint(); // "Hello World"
+  }
+}
+ 
+class MyApp
+{
+  void MyPrint(string s1, string s2)
+  {
+    System.Console.Write(s1 + s2);
+  }
+
+  static void Main()
+  {
+    MyApp m = new MyApp();
+    m.MyPrint("Hello", " World"); // "Hello World"
+  }
+}
+ 
+// Params keyword
+class MyApp
+{
+  void MyPrint(params string[] s)
+  {
+    foreach (string x in s)
+      System.Console.WriteLine(x);
+  }
+}
+ 
+// Method overloading
+class MyApp
+{
+  void MyPrint(string s)
+  {
+    System.Console.Write(s);
+  }
+ 
+  void MyPrint(int i)
+  {
+    System.Console.Write(i);
+  }
+}
+
+// Optional parameters and named arguments
+class MyApp
+{
+  void MySum(int i, int j = 0, int k = 0)
+  {
+    System.Console.Write(1*i + 2*j + 3*k);
+  }
+ 
+  static void Main()
+  {
+    new MyApp().MySum(1, 2);    // "5"
+    new MyApp().MySum(1, k: 2); // "7"
+    new MyApp().MySum(i: 2, 1); // "4"
+  }
+}
+ 
+// Return statement
+class MyApp
+{
+  string GetPrint()
+  {
+    return "Hello";
+  }
+
+  static void Main()
+  {
+    MyApp m = new MyApp();
+    System.Console.Write(m.GetPrint()); // "Hello World"
+  }
+}
+ 
+// Passing value types
+class MyApp
+{
+  void Set(int i) { i = 10; }
+ 
+  static void Main()
+  {
+    MyApp m = new MyApp();
+    int x = 0; // value type
+    m.Set(x); // pass value of x
+    System.Console.Write(x); // "0"
+  }
+}
+ 
+// Passing reference types
+class MyApp
+{
+  void Set(int[] i) { i = new int[] { 10 }; }
+
+  static void Main()
+  {
+    MyApp m = new MyApp();
+    int[] y = { 0 }; // reference type
+    m.Set(y); // pass object reference
+    System.Console.Write(y[0]); // "10"
+  }
+}
+
+// Ref keyword
+class MyApp
+{
+  void Set(ref int i) { i = 10; }
+ 
+  static void Main()
+  {
+    MyApp m = new MyApp();
+    int x = 0; // value type
+    m.Set(ref x); // pass reference to value type
+    System.Console.Write(x); // "10"
+  }
+}
+
+// Return by reference
+class MyClass
+{
+  public int myField = 5;
+  public ref int GetField()
+  { 
+    return ref myField;
+  }
+
+  static void Main()
+  {
+    MyClass m = new MyClass();
+    ref int myAlias = ref m.GetField(); // reference
+    int myCopy = m.GetField(); // value copy
+    myAlias = 10;
+    System.Console.WriteLine(m.myField); // "10"
+  }
+}
+
+// Out keyword
+class MyApp
+{
+  void Set(out int i) { i = 10; }
+ 
+  static void Main()
+  {
+    MyApp m = new MyApp();
+    int x; // value type
+    m.Set(out x); // pass reference to unset value type
+    System.Console.Write(x); // "10"
+  }
+}
+
+// Out variable declaration
+class MyApp
+{
+  void Set(out int i) { i = 10; }
+ 
+  static void Main()
+  {
+    MyApp m = new MyApp();
+    m.Set(out int x);
+    System.Console.Write(x); // 10
+  }
+}
+
+// Local methods
+class MyClass
+{
+  void CountDown()
+  {
+    int x = 10;
+    Recursion(x);
+    System.Console.WriteLine("Done");
+
+    void Recursion(int i)
+    {
+      if (i <= 0) return;
+      System.Console.WriteLine(i);
+      System.Threading.Thread.Sleep(1000); // wait 1 second
+      Recursion(i - 1);
+    }
+  }
+
+  static void Main()
+  {
+    new MyClass().CountDown();
+  }
+}
+
+*** Chapter 10 - Class ***
+ 
+class MyRectangle
+{
+  // Field initializer
+  public int x = 10, y = 20;
+
+  public int GetArea() { return x * y; }
+
+  public MyRectangle() : this(10,5) {}
+
+  public MyRectangle(int a) : this(a,a)  {}
+
+  public MyRectangle(int x, int y)
+  {
+    this.x = x; // set field x to parameter x
+    this.y = y;
+  }
+}
+
+class MyClass
+{
+  static void Main()
+  {
+    // Create an object of MyRectangle
+    MyRectangle r = new MyRectangle();
+
+    // Accessing object members
+    r.x = 10;
+    r.y = 5;
+    int a = r.GetArea(); // 50
+  }
+}
+
+// Object initializers
+class MyRectangle
+{
+  public int x, y;
+}
+ 
+class MyClass
+{
+  static void Main()
+  {
+    // Object initializer
+    MyRectangle r = new MyRectangle() { x = 10, y = 5 };
+    MyRectangle s = new MyRectangle { x = 10, y = 5 };
+  }
+}
+ 
+ 
+// Destructor
+class MyComponent
+{
+  public System.ComponentModel.Component comp;
+
+  public MyComponent() 
+  { 
+    comp = new System.ComponentModel.Component();
+  }
+ 
+  // Destructor
+  ~MyComponent() 
+  { 
+    comp.Dispose(); 
+  }
+}
+ 
+// Null keyword
+class MyApp
+{
+  public string s; // null by default
+
+  static void Main()
+  {
+    MyApp o = new MyApp();
+    if (o.s == null) { o.s = ""; } // create a valid object (empty string)
+    int length = o.s.Length; // 0
+
+    string s = null;
+    length = (s != null) ? s.Length : 0; // 0
+
+    // Nullable value types
+    bool? b = null;
+
+    // Nullable reference types
+    #nullable enable
+    string a = null; // warning
+    string? c = null;
+    //…
+    int j = c.Length; // warning
+        j = c!.Length; // warning supressed
+    if (c != null)
+      int k = c.Length; // no warning
+    #nullable disable
+
+    // Null-coalescing operator
+    int? i = null;
+    int j = i ?? 0; // 0
+    i ??= 3; // assign i=3 if i==null, same as i = i ?? 3;
+
+    // Null-conditional operator
+    s = null;
+    int? l1 = s?.Length; // null
+    int l2 = s?.Length ?? 0; // 0
+
+    string[] arr = null;
+    string s3 = arr?[3]; // null
+  }
+}
+
+// Default values
+class MyClass
+{
+  int x; // field is assigned default value 0
+  void test()
+  {
+    int x; // local variable must be assigned if used
+  }
+}
+
+// Type inference
+class MyApp
+{
+  class MyClass {}
+  var o = new MyClass(); // Implicit type
+  MyClass o = new MyClass(); // Explicit type
+}
+
+// Anonymous types
+class MyApp
+{
+  var v = new { first = 1, second = true };
+  System.Console.WriteLine(v.first); // "1"
+}
+
+*** Chapter 11 - Inheritance ***
+ 
+// Base class (parent class)
+class Rectangle
+{
+  public int x = 10, y = 10;
+  public int GetArea() { return x * y; }
+}
+
+// Derived class (child class)
+class Square : Rectangle { }
+
+class MyApp
+{
+  static void Main()
+  {
+    // Object class
+    System.Object o = new object();
+    System.Console.Write(o.ToString());
+
+    // Upcast and downcast
+    Square s = new Square();
+    Rectangle r = s;
+    Square s2 = (Square)r;
+
+    // Is keyword
+    Rectangle q = new Square();
+    if (q is Square) { Square s3 = (Square)q; }
+
+    // As keyword
+    Rectangle r2 = new Rectangle();
+    Square s4 = r2 as Square; // invalid cast, returns null
+
+    // Pattern matching
+    Rectangle q2 = new Square();
+    if (q2 is Square mySquare) { /* use mySquare here */ } 
+
+    object obj = "Hello";
+    if (!(obj is string text)) { return; } // exit if obj is not a string
+    System.Console.WriteLine(text); // "Hello"
+
+    // Boxing and unboxing
+    int myInt = 5;
+    object myObj = myInt;
+    myInt = (int)myObj;
+  }
+}
+
+// Pattern matching
+class MyApp
+{
+  void Test(object o)
+  {
+    if (o is 5) System.Console.WriteLine("5");
+    else if (o is int i) System.Console.WriteLine("int:" + i);
+    else if (o is null) System.Console.WriteLine("null");
+  }
+
+  void TestSwitch(object o)
+  {
+    switch(o)
+    {
+      case 5: System.Console.WriteLine("5"); break;
+      case int i: System.Console.WriteLine("int:" + i); break;
+      case null: System.Console.WriteLine("null"); break;
+    }
+  }
+
+  static void Main()
+  {
+    MyApp c = new MyApp();
+    c.Test(5); // "5"
+    c.Test(1); // "int:1"
+    c.Test(null); // "null"
+  }
+}
+
+*** Chapter 12 - Redefining Members ***
+ 
+// Hiding members
+class Rectangle
+{
+  public int x = 1, y = 10;
+  public int GetArea() { return x * y; }
+}
+ 
+class Square : Rectangle
+{
+  public new int GetArea() { return 2 * x; }
+}
+
+ 
+// Overriding members
+class Rectangle
+{
+  public int x = 1, y = 10;
+  public virtual int GetArea() { return x * y; }
+}
+
+class Square : Rectangle
+{
+  public override int GetArea() { return 2 * x; }
+}
+ 
+ 
+// Sealed keyword
+class MyClass
+{
+  public sealed override int NonOverridable() {}
+}
+
+sealed class NonInheritable {}
+ 
+ 
+// Base keyword
+class Rectangle
+{
+  public int x = 1, y = 10;
+  public virtual int GetArea() { return x * y; }
+  public Rectangle(int a, int b) { x = a; y = b; }
+}
+
+class Square : Rectangle
+{
+  public Square(int a) : base(a,a) {}
+  public override int GetArea() { return base.GetArea(); }
+}
+
+*** Chapter 13 - Access Levels ***
+ 
+class MyBase
+{
+  // Unrestricted access
+  public int myPublic;
+ 
+  // Defining assembly or derived class
+  protected internal int myProtInt;
+ 
+  // Derived class within defining assembly
+  private protected int myPrivProt;
+
+  // Defining assembly
+  internal int myInternal;
+ 
+  // Derived class
+  protected int myProtected;
+ 
+  // Defining class only
+  private int myPrivate;
+ 
+  void Test()
+  {
+    myPublic    = 0; // allowed
+    myProtInt   = 0; // allowed
+    myPrivProt  = 0; // allowed
+    myInternal  = 0; // allowed
+    myProtected = 0; // allowed
+    myPrivate   = 0; // allowed
+  }
+}
+
+class Derived : MyBase
+{
+  void Test()
+  {
+    myPublic    = 0; // allowed
+    myProtInt   = 0; // allowed
+    myPrivProt  = 0; // allowed
+    myInternal  = 0; // allowed
+    myProtected = 0; // allowed
+    myPrivate   = 0; // inaccessible    
+  }
+}
+
+// Defining assembly
+class AnyClass
+{
+  void Test(MyBase m)
+  {
+    m.myPublic    = 0; // allowed
+    m.myProtInt   = 0; // allowed
+    myPrivProt    = 0; // inaccessible
+    m.myInternal  = 0; // allowed
+    m.myProtected = 0; // inaccessible
+    m.myPrivate   = 0; // inaccessible
+  }
+}
+
+
+// Other assembly
+class Derived : MyBase
+{
+  void Test(MyBase m)
+  {
+    m.myPublic    = 0; // allowed
+    m.myProtInt   = 0; // allowed
+    myPrivProt    = 0; // inaccessible
+    m.myInternal  = 0; // inaccessible
+    m.myProtected = 0; // allowed
+    m.myPrivate   = 0; // inaccessible
+  }
+}
+
+
+// Defining assembly
+class Derived : MyBase
+{
+  void Test()
+  {
+    myPublic    = 0; // allowed
+    myProtInt   = 0; // allowed
+    myPrivProt  = 0; // allowed
+    myInternal  = 0; // allowed
+    myProtected = 0; // allowed
+    myPrivate   = 0; // inaccessible
+  }
+}
+
+
+class AnyClass
+{
+  void Test(MyBase m)
+  {
+    m.myPublic    = 0; // allowed
+    m.myProtInt   = 0; // inaccessible
+    m.myPrivProt  = 0; // inaccessible
+    m.myInternal  = 0; // inaccessible
+    m.myProtected = 0; // inaccessible
+    m.myPrivate   = 0; // inaccessible
+  }
+}
+ 
+ 
+// Top-level access levels
+internal class MyInternalClass {}
+public class MyPublicClass {}
+ 
+ 
+// Inner classes
+class MyBase
+{
+  // Inner classes (nested classes)
+  public    class MyPublic {}
+  protected internal class MyProtInt {}
+  internal  class MyInternal {}
+  protected class MyProtected {}
+  private   class MyPrivate {}
+}
+ 
+*** Chapter 14 - Static ***
+ 
+class MyCircle
+{
+  // Instance variable (one per object)
+  public float r = 10F;
+
+  // Static/class variable (only one copy)
+  public static float pi = 3.14F;
+
+  // Instance method
+  public float GetArea()
+  {
+    return ComputeArea(r);
+  }
+
+  // Static/class method
+  public static float ComputeArea(float a)
+  {
+    return pi * a * a;
+  }
+}
+
+class MyApp
+{
+  static void Main()
+  {
+    // Accessing static members
+    float f = MyCircle.ComputeArea(MyCircle.pi);
+    double pi = System.Math.PI;
+  }
+}
+ 
+ 
+// Static constructor
+class MyClass
+{
+  static int[] array = new int[5];
+ 
+  static MyClass()
+  {
+    for(int i = 0; i < array.Length; i++)
+      array[i] = i;
+  }
+}
+ 
+ 
+// Static local functions
+class MyClass
+{
+  string GetName()
+  {
+    string name = "John";
+    return LocalFunc(name);
+    static string LocalFunc(string s) { return s; }
+  }
+}
+
+
+// Extension methods
+static class MyExtensions
+{
+  public static int ToInt(this string s) {
+    return Int32.Parse(s);
+  }
+}
+
+class MyApp
+{
+  static void Main() {
+    string s = "10";
+    int i = s.ToInt();
+  }
+}
+ 
+*** Chapter 15 - Properties ***
+
+class Time
+{
+  private int seconds;
+ 
+  public int sec
+  {
+    get { return seconds; }
+    set { seconds = value; }
+  }
+} 
+
+class MyApp
+{
+  static void Main()
+  {
+    Time t = new Time();
+    t.sec = 5;
+    int s = t.sec;
+  }
+}
+ 
+ 
+class Time
+{
+  private byte seconds;
+ 
+  public int sec
+  {
+    get { return (int)seconds; }
+    set { seconds = (byte)value; }
+  }
+}
+
+ 
+class Time
+{
+  private int seconds;
+  public int hour
+  {
+    get { return seconds / 3600; }
+    set
+    {
+      seconds = value * 3600;
+      count++;
+    }
+  }
+
+  private int count = 0;
+}
+ 
+ 
+// Read-only property
+private int sec
+{
+  public get { return seconds; }
+}
+ 
+// Write-only property
+private int sec
+{
+  public set { seconds = value; }
+}
+
+
+// Auto-implemented properties
+class Time
+{
+  // Auto-implemented property
+  public int sec { get; set; }
+
+  // Read-only auto-property with initializer
+  public System.DateTime Created { get; } = System.DateTime.Now;
+} 
+
+*** Chapter 16 - Indexers ***
+
+class MyArray
+{
+  object[] data = new object[10];
+ 
+  public object this[int i]
+  {
+    get { return data[i]; }
+    set { data[i] = value; }
+  }
+}
+
+class MyApp
+{
+  static void Main()
+  {
+    MyArray a = new MyArray();
+    a[5] = "Hello World";
+    object o = a[5]; // Hello World
+  }
+}
+ 
+ 
+// Indexer parameters
+class MyArray
+{
+  object[,] data = new object[10,10];
+ 
+  public object this[int i, int j]
+  {
+    get { return data[i,j]; }
+    set { data[i,j] = value; }
+  }
+}
+
+ 
+class MyArray
+{
+  object[] data = new object[10];
+ 
+  public int this[object o]
+  {
+    get { return System.Array.IndexOf(data, o); }
+  }
+}
+ 
+  
+// Indexer overloading
+class MyArray
+{
+  object[] data = new object[10];
+ 
+  public int this[object o]
+  {
+    get { return System.Array.IndexOf(data, o); }
+  }
+ 
+  public object this[int i]
+  {
+    get { 
+      return (i >= 0 && i < data.Length) ? data[i] : null; 
+    }
+    set { 
+      if (i >= 0 && i < data.Length) 
+        data[i] = value; 
+    }
+  }
+}
+
+
+// Ranges and indices
+class MyArray
+{
+  static void Main()
+  {
+    int[] b = { 1, 2, 3, 4, 5 };
+    foreach (int n in b[1..3]) {
+      System.Console.Write(n); // "23"
+    }
+
+    System.Range range = 0..3; // 1st to 3rd
+    foreach (int n in b[range]) {
+      System.Console.Write(n); // "123"
+    }
+
+    string s = "welcome";
+    System.Index first = 0;
+    System.Index last = ^1;
+    System.Console.Write($"{s[first]}, {s[last]}"); // "w, e"
+  }
+}
+
+*** Chapter 17 - Interface ***
+ 
+interface IMyInterface
+{
+  // Interface method
+  int GetArea();
+ 
+  // Interface property
+  int Area { get; set; }
+ 
+  // Interface indexer
+  int this[int index] { get; set; }
+ 
+  // Interface event
+  event System.EventHandler MyEvent;
+}
+ 
+ 
+// Functionality interface
+interface IComparable
+{
+  int Compare(object o);
+}
+
+class Circle : IComparable
+{
+  int r;
+ 
+  public int Compare(object o)
+  {
+    return r - (o as Circle).r;
+  }
+
+  static object Largest(IComparable a, IComparable b)
+  {
+    return (a.Compare(b) > 0) ? a : b;
+  }
+}
+ 
+ 
+// Class interface
+interface IMyClass
+{
+  void Exposed();
+}
+
+class MyClass : IMyClass
+{
+  public void Exposed() {}
+  public void Hidden()  {}
+}
+
+class MyApp
+{
+  static void Main()
+  {
+    IMyClass m = new MyClass();
+  }
+}
+
+
+// Default implementations
+interface ILogger
+{
+  void Info(string message);
+  void Error(string message)
+  {
+    System.Console.WriteLine(message);
+  }
+}
+
+class ConsoleLogger : ILogger
+{
+  public void Info(string message)
+  {
+    System.Console.WriteLine(message);
+  }
+}
+
+*** Chapter 18 - Abstract ***
+ 
+abstract class Shape
+{
+  // Abstract method
+  public abstract int GetArea();
+ 
+  // Abstract property
+  public abstract int area { get; set; }
+ 
+  // Abstract indexer
+  public abstract int this[int index] { get; set; }
+ 
+  // Abstract event
+  public delegate void MyDelegate();
+  public abstract event MyDelegate MyEvent;
+ 
+  // Abstract class
+  public abstract class InnerShape {};
+}
+ 
+ 
+// Abstract example
+abstract class Shape
+{
+  protected int x = 100, y = 100;
+  public abstract int GetArea();
+}
+
+class Rectangle : Shape
+{
+  public override int GetArea() { return x * y; }
+}
+ 
+ 
+// Defines default functionality and definitions
+abstract class Shape
+{
+  public int x = 100, y = 100;
+  public abstract int GetArea();
+}
+
+// Class is a Shape
+class Rectangle : Shape {}
+
+// Defines an interface or a specific functionality
+interface IComparable
+{
+  int Compare(object o);
+}
+
+// Class can be compared 
+class MyClass : IComparable {}
+ 
+*** Chapter 19 - Namespaces ***
+ 
+namespace MyNamespace
+{
+  class MyClass {}
+}
+
+namespace MyNamespace
+{
+  namespace NestedNamespace
+  {
+    class MyClass {}
+  }
+}
+ 
+ 
+// Namespace access
+namespace MyNamespace.NestedNamespace
+{
+  public class MyClass {}
+}
+ 
+namespace OtherNamespace
+{
+  class MyApp
+  {
+    static void Main()
+    {
+      MyNamespace.NestedNamespace.MyClass myClass;
+    }
+  }
+}
+ 
+ 
+// Using directive
+using MyNamespace.NestedNamespace;
+using MyAlias = MyNamespace.NestedNamespace;
+using MyType = MyNamespace.NestedNamespace.MyClass;
+
+namespace MyNamespace.NestedNamespace
+{
+  public class MyClass 
+  { 
+    public static int x; 
+  }
+}
+
+namespace OtherNamespace
+{
+  public class MyClass
+  {
+    static void Main()
+    {
+      int x = MyNamespace.NestedNamespace.MyClass.x;
+          x = MyAlias.MyClass.x;
+          x = MyType.x;
+    }
+  }
+}
+
+
+using static System.Math;
+
+public class Circle
+{ 
+  public double radius { get; set; }
+  public double Area
+  {
+    get { return PI * Pow(radius, 2); }
+  }
+}
+
+*** Chapter 20 - Enum ***
+ 
+class MyApp
+{
+  enum State { Run, Wait, Stop };
+
+  static void Main()
+  {
+    State s = State.Run;
+
+    switch (s)
+    {
+      case State.Run:  break;
+      case State.Wait: break;
+      case State.Stop: break;
+    }
+  }
+}
+ 
+ 
+enum State
+{
+  Run,  // 0
+  Wait, // 1
+  Stop, // 2
+};
+ 
+ 
+enum State
+{
+  Run = 0, Wait = 3, Stop = Wait + 1
+};
+
+class MyApp
+{
+  static void Main()
+  {
+    State s = State.Run;
+    int i = (int)s; // 0
+    string t = s.ToString(); // Run
+  }
+}
+
+
+class MyApp
+{
+  enum State { Run, Wait, Stop };
+
+  static void Main()
+  { 
+    State s = State.Run;
+    int i = (int)s; // 0
+    string t = s.ToString(); // Run
+  }
+}
+
+class MyApp
+{
+  enum Colors { Red, Green };
+  static void Main()
+  {
+    foreach (string s in System.Enum.GetNames(typeof(Colors)))
+    {
+      System.Console.Write(s); // "RedGreen"
+    }
+  }
+} 
+
+*** Chapter 21 - Exception Handling ***
+ 
+using System;
+using System.IO;
+
+class ErrorHandling
+{
+  static void Main()
+  {
+    try
+    {
+      StreamReader sr = new StreamReader("missing.txt");
+    }
+    catch (Exception e)
+    {
+      Console.Write("Error: " + e.Message);
+    }
+  }
+}
+ 
+
+// Exception filters
+using System;
+using System.IO;
+
+class ErrorHandling
+{
+  static void Main()
+  {
+    try
+    { 
+      StreamReader sr = new StreamReader("missing.txt");
+    }
+    catch (FileNotFoundException e) 
+    when (e.FileName.Contains(".txt"))
+    { 
+      Console.WriteLine("Missing text file: " + e.FileName);
+    }
+  }
+}
+
+
+using System;
+using System.IO;
+ 
+static class ErrorHandling
+{
+  // Extension method
+  public static bool LogException(this Exception e)
+  {
+    Console.Error.WriteLine($"Exception: {e}");
+    return false;
+  }
+
+  static void Main()
+  { 
+    try
+    { 
+      var sr = new StreamReader("missing.txt");
+    }
+    catch (Exception e) when (LogException(e))
+    {
+      // Never reached
+    }
+    catch (FileNotFoundException)
+    { 
+      // Actual handling of exception
+    }
+  }
+}
+
+
+// Finally block
+using System;
+using System.IO;
+
+class ErrorHandling
+{
+  static void Main()
+  {
+    StreamReader sr = null;
+
+    try
+    { 
+      sr = new StreamReader("missing.txt"); 
+    }
+    catch (FileNotFoundException) {}
+    finally
+    {
+      if (sr != null) sr.Close();
+    }
+  }
+}
+ 
+ 
+using System.Drawing;
+
+class ErrorHandling
+{
+  static void Main()
+  {
+    Bitmap b = null;
+    try {
+      b = new Bitmap(100, 50);
+      System.Console.WriteLine(b.Width); // "100"
+    }
+    finally {
+      if (b != null) b.Dispose();
+    }
+  }
+}
+ 
+ 
+// Using statement
+using System.Drawing;
+
+class ErrorHandling
+{
+  static void Main()
+  {
+    using (Bitmap b = new Bitmap(100, 50)) {
+      System.Console.WriteLine(b.Width); // "100"
+    } // disposed
+  }
+
+  void MyBitmap()
+  {
+    using Bitmap b = new Bitmap(100, 50);
+    System.Console.WriteLine(b.Height); // "50"
+  } // disposed
+}
+
+
+// Throwing exceptions
+class ErrorHandling
+{
+  static void MakeError()
+  {
+    throw new System.DivideByZeroException("My Error");
+  } 
+
+  static void Main()
+  {
+    try { MakeError(); } catch { throw; }
+  }
+}
+
+// Nameof
+using System;
+class MyClass
+{
+  private string _name;
+  public string name
+  {
+    get => _name;
+    set => _name = value ?? throw new
+      ArgumentNullException(nameof(name)+" was null");
+  }
+
+  static void Main()
+  {
+    MyClass c = new MyClass();
+    c.name = null; // exception: name was null
+  }
+}
+ 
+*** Chapter 22 - Operator Overloading ***
+ 
+class MyNum
+{
+  public int val;
+  public MyNum(int i) { val = i; }
+ 
+  public static MyNum operator +(MyNum a, MyNum b) 
+  {
+    return new MyNum(a.val + b.val);
+  }
+
+  public static MyNum operator +(MyNum a, int b)
+  {
+    return new MyNum(a.val + b);
+  }
+
+  public static MyNum operator ++(MyNum a) 
+  {
+    return new MyNum(a.val + 1);
+  }
+}
+
+class MyApp
+{
+  static void Main()
+  {
+    MyNum a = new MyNum(10), b = new MyNum(5);
+    MyNum c = a + b;
+    a++;
+    ++a;
+  }
+}
+ 
+ 
+// True and false operator overloading
+class MyNum
+{
+  public int val;
+  public MyNum(int i) { val = i; }
+ 
+  public static bool operator true(MyNum a) {
+    return (a.val != 0);
+  }
+ 
+  public static bool operator false(MyNum a) {
+    return (a.val == 0);
+  }
+}
+ 
+class MyApp
+{
+  static void Main() 
+  {
+    MyNum a = new MyNum(10);
+    if (a) System.Console.Write("true");
+    else System.Console.Write("false");
+  }
+}
+
+*** Chapter 23 - Custom Conversions ***
+ 
+// Implicit conversion methods
+class MyNum
+{
+  public int val;
+  public MyNum(int i) { val = i; }
+
+  public static implicit operator MyNum(int a)
+  {
+    return new MyNum(a);
+  } 
+
+  public static implicit operator int(MyNum a)
+  {
+    return a.val;
+  }
+}
+
+class MyApp
+{
+  static void Main() 
+  {
+    MyNum a = 5; // implicit conversion
+  }
+}
+ 
+ 
+// Explicit conversion methods
+class MyNum
+{
+  public int val;
+  public MyNum(int i) { val = i; }
+
+  public static explicit operator MyNum(int a)
+  {
+    return new MyNum(a);
+  } 
+
+  public static explicit operator int(MyNum a)
+  {
+    return a.val;
+  }
+}
+
+class MyApp
+{
+  static void Main() 
+  {
+    MyNum a = (MyNum)5;
+    int i = (int)a; // explicit conversion
+  }
+}
+
+*** Chapter 24 - Struct ***
+ 
+struct Point
+{
+  public int x, y;
+
+  public Point(int x, int y)
+  {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+class MyApp
+{
+  static void Main()
+  {
+    Point p1 = new Point();
+    Point p2 = new Point(0, 0);
+    Point q;
+  }
+}
+ 
+*** Chapter 25 - Preprocessor ***
+ 
+#line 1 // set line number
+
+// Conditional compilation symbols
+#define MySymbol
+#undef MySymbol
+
+// Conditional compilation
+#if MySymbol
+ // …
+#endif
+
+#if Professional
+ // …
+#elif Advanced || Enterprise
+ // …
+#else
+  #if Debug
+   // …
+  #endif // Debug
+#endif // Professional
+
+// Diagnostic directives
+#if Professional && Enterprise
+ #error Build cannot be both Professional and Enterprise
+#endif
+
+#if !Professional && !Enterprise
+ #warning Build should be Professional or Enterprise
+#endif
+
+// Line directive
+#line 500 "MyFile"
+#error MyError // MyError on line 500
+
+// Region directive
+#region MyRegion
+ #region MySubRegion
+ #endregion
+#endregion
+
+*** Chapter 26 - Delegates ***
+ 
+delegate void MyDelegate(string str);
+
+class MyApp
+{
+  static void Print(string s) 
+  { 
+    System.Console.WriteLine(s); 
+  }
+ 
+  static void Main()
+  {
+    MyDelegate d = Print;
+    d("Hello"); // "Hello"
+
+    MyDelegate e = new MyDelegate(Print);
+
+    // Anonymous method
+    MyDelegate f = delegate(string s) 
+    {
+      System.Console.WriteLine(s); 
+    };
+  }
+}
+ 
+ 
+// Lambda expressions
+delegate int MyDelegate(int i);
+delegate void MyEmptyDelegate();
+
+class MyApp
+{
+  static void Main()
+  {
+    // Anonymous method
+    MyDelegate a = delegate(int x) { return x * x; };
+ 
+    // Lambda expression
+    MyDelegate b = (int x) => x * x;
+ 
+    a(5); // 25
+    b(5); // 25
+
+    MyDelegate c = x => x * x;
+
+    MyEmptyDelegate d = () => System.Console.WriteLine("Hello");
+
+    MyDelegate e = (int x) => {
+      int y = x * x;
+      return y;
+    };
+  }
+}
+ 
+ 
+// Expression body members
+class Person
+{
+  public string name { get; } = "John";
+  public void PrintName() { System.Console.WriteLine(name); }
+}
+
+class Person2
+{
+  public string name => "John";
+  public void PrintName() => System.Console.WriteLine(name);
+}
+
+class Person3
+{
+  private string firstName;
+  public string name 
+  {
+    get => firstName;
+    set => firstName = value;
+  }
+  public Person(string name) => this.name = name;
+}
+
+
+// Multicast delegates
+class MyApp
+{
+  delegate void MyEmptyDelegate();
+  static void Hi()  { System.Console.Write("Hi"); }
+  static void Bye() { System.Console.Write("Bye"); }
+
+  static void Main()
+  {
+    MyEmptyDelegate del = Hi;
+    del = del + Hi;
+    del += Bye;
+    del -= Hi;
+    del(); // "HiBye"
+  }
+}
+ 
+ 
+// Delegate signature
+class Base {}
+class Derived : Base {}
+ 
+delegate Base MyDelegate(Derived d);
+ 
+class MyClass
+{
+  static Derived Dummy(Base o) { return new Derived(); }
+ 
+  static void Main()
+  {
+    MyDelegate d = Dummy;
+  }
+}
+ 
+ 
+// Delegates as parameters
+delegate void ProcessPersonDelegate(string name);
+ 
+class PersonDB
+{
+  string[] list = { "John", "Sam", "Dave" };
+ 
+  public void Process(ProcessPersonDelegate f)
+  { 
+    foreach (string s in list) f(s);
+  }
+}
+
+class Client
+{
+  static void Main()
+  {
+    PersonDB p = new PersonDB();
+    p.Process(PrintName);
+  }
+
+  static void PrintName(string name)
+  { 
+    System.Console.WriteLine(name); 
+  }
+}
+ 
+*** Chapter 27 - Events ***
+
+class Publisher : System.Collections.ArrayList
+{
+  public delegate void EventHandlerDelegate(object sender, System.EventArgs e);
+
+  public event EventHandlerDelegate Added;
+ 
+  protected virtual void OnAdded(System.EventArgs e)
+  {
+    if (Added != null) Added(this, e);
+  }
+ 
+  public override int Add(object value)
+  {
+    int i = base.Add(value);
+    OnAdded(System.EventArgs.Empty);
+    return i;
+  }
+}
+
+class Subscriber
+{
+  public void AddedEventHandler(object sender, System.EventArgs e)
+  {
+    System.Console.WriteLine("AddEvent occurred");
+  }
+}
+
+class MyApp
+{
+  static void Main()
+  {
+    Subscriber s = new Subscriber();
+    Publisher  p = new Publisher();
+ 
+    p.Added += s.AddedEventHandler;
+    p.Add(10); // AddEvent occurred
+  }
+}
+ 
+*** Chapter 28 - Generics ***
+ 
+// Generic methods
+class MyApp
+{
+  static void Swap<T>(ref T a, ref T b)
+  {
+    T temp = a;
+    a = b;
+    b = temp;
+  }
+
+  static void Main()
+  {
+    int a = 0, b = 1;
+    Swap<int>(ref a, ref b); // create & call Swap<int>
+    Swap<int>(ref a, ref b); // call Swap<int>
+
+    long c = 0, d = 1;
+    Swap<long>(ref c, ref d); // create & call Swap<long>
+  }
+}
+ 
+ 
+// Generic classes
+class Point<T>
+{
+  public T x, y;
+}
+
+class MyApp
+{
+  static void Main()
+  {
+    Point<short> p = new Point<short>();
+  }
+}
+ 
+ 
+// Generic class inheritance
+class BaseConcrete  {}
+class BaseGeneric<T>{}
+
+class Gen1<T> : BaseConcrete    {} // concrete
+class Gen2<T> : BaseGeneric<int>{} // closed constructed
+class Gen3<T> : BaseGeneric<T>  {} // open constructed
+
+class BaseMultiple<T, U, V> {}
+class Gen4<T, U> : BaseMultiple<T, U, int> {}
+
+class Con1 : BaseGeneric<int> {} // ok
+class Con2 : BaseGeneric<T> {}   // error
+
+
+// Generic functionality interface
+interface IGenericCollection<T>
+{
+  void store(T t);
+}
+ 
+// Non-generic class implementing generic interface
+class Box : IGenericCollection<int>
+{
+  public int myBox;
+  public void store(int i) { myBox = i; }
+}
+
+// Generic class implementing generic interface
+class GenericBox<T> : IGenericCollection<T>
+{
+  public T myBox;
+  public void store(T t) { myBox = t; }
+}
+
+
+// Generic delegates
+class MyClass
+{
+  public delegate void MyDelegate<T>(T arg);
+ 
+  public void Print(string s)
+  {
+    System.Console.Write(s);
+  }
+ 
+  static void Main()
+  {
+    MyDelegate<string> d = Print;
+  }
+}
+ 
+ 
+// Generic events
+class MyClass
+{
+  delegate void MyDelegate<T, U>(T sender, U eventArgs);
+  event MyDelegate<MyClass, System.EventArgs> myEvent;
+}
+ 
+ 
+// Object container class
+class MyBox { public object o; }
+ 
+// Generic container class
+class MyBox<T> { public T o; }
+ 
+class MyClass
+{
+  static void Main()
+  {
+    // .NET object container
+    System.Collections.ArrayList a;
+ 
+    // .NET generic container (preferred)
+    System.Collections.Generic.List<int> b;
+  }
+}
+ 
+// Constraints
+class C<T> where T : struct {} // value type
+class D<T> where T : class {}  // reference type
+class B {}
+class E<T> where T : B {}    // be/derive from base class
+class F<T, U> where T : U {} // be/derive from U
+interface I {}
+class G<T> where T : I {}     // be/implement interface
+class H<T> where T : new() {} // no parameter constructor
+ 
+ 
+// Why to use constraints
+class Person
+{
+  public string name;
+}
+ 
+class PersonNameBox<T> where T : Person
+{
+  public string box;
+ 
+  public void StorePersonName(T a)
+  {
+    box = a.name;
+  }
+}
+
+class MyClass<T> where T : new() {}
+
+class MyChild<T> : MyClass<T> 
+  where T : MyClass<T>, new() {}
+
+*** Chapter 29 - Constants ***
+ 
+class MyClass
+{
+  public const int b = 5; // compile-time constant field
+}
+
+class MyApp
+{
+  static void Main() 
+  {
+    const int a = 10; // compile-time constant
+    int c = MyClass.b;
+  }
+}
+
+// Readonly
+class MyClass
+{
+  readonly int c = 3; // run-time constant field
+  readonly int d = System.DateTime.Now.Hour;
+  readonly int[] e = { 1, 2, 3 };
+
+  readonly string s;
+  public MyClass() { s = "Hello World"; }
+}
+
+readonly struct MyStruct
+{ 
+  public readonly int myVar;
+  public int myProperty { get; }
+  public MyStruct(int var, int prop) 
+  {
+    myVar = var;
+    myProperty = prop;
+  }
+}
+
+class MyClass
+{
+  readonly static int i;
+  static ref readonly int GetValue() { return ref i; }
+
+  static void Main()
+  { 
+    ref readonly int a = ref GetValue();
+    a = 5; // error: readonly variable
+  } 
+}  
+
+// In parameters
+class MyApp
+{
+  static void Test(in int num)
+  {
+    // num = 5; // error: readonly parameter
+  }
+
+  static void Main()
+  { 
+    int i = 10;
+    Test(i); // passed by readonly reference
+    Test(2); // allowed, temporary variable created
+  }
+}
+
+*** Chapter 30 - Asynchronous methods ***
+
+class MyApp
+{
+  async void MyAsync()
+  {
+    System.Console.Write("A");
+    await System.Threading.Tasks.Task.Delay(2000);
+    System.Console.Write("C");
+  }
+
+  static void Main()
+  {
+    new MyApp().MyAsync();
+    System.Console.Write("B");
+    System.Console.ReadKey();
+  }
+}
+
+// Custom async methods
+using System.Threading.Tasks;
+using System.Threading;
+
+class MyApp
+{
+  Task<string> MyTask()
+  {
+    return Task.Run<string>( () => {
+      Thread.Sleep(2000);
+      return "Y";
+    });
+  }
+
+  async void MyTaskAsync()
+  {
+    string result = await MyTask();
+    System.Console.Write(result);
+  }
+
+  static void Main()
+  {
+    new MyApp().MyTaskAsync();
+    System.Console.Write("X");
+    System.Console.ReadKey();
+  }
+}
+
+// Extended return types
+using System.Threading.Tasks;
+public class MyAsyncValueTask
+{
+  static async Task Main()
+  {
+    double d = await PowTwo(10);
+    System.Console.WriteLine(d); // "100"
+  }
+
+  private static async ValueTask<double> PowTwo(double a)
+  {
+    if (a < 10 && a > -10) { return System.Math.Pow(a, 2); }
+    return await Task.Run(() => System.Math.Pow(a, 2));
+  }
+}
+
+// Async streams
+using System.Collections.Generic;
+using System.Threading.Tasks;
+class MyApp
+{
+  static async IAsyncEnumerable<int> MyStream(int count)
+  {
+    int sum = 0;
+    for (int i = 0; i <= count; i++)
+    {
+      sum = sum + i;
+      yield return sum; // return a result
+      // Simulate waiting for more data 
+      await Task.Delay(1000);
+    } 
+    // end stream
+  }
+
+  static async Task Main()
+  {
+    await foreach (int data in MyStream(3))
+    {
+      System.Console.Write(data + " "); // "0 1 3 6"
+    }
+  }
+}
